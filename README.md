@@ -20,7 +20,7 @@ Launch webserver, visit `index.html`.
 Here's a simple example using a python web server:
 
 ```shell
-python -m python -m SimpleHTTPServer 3000
+python -m SimpleHTTPServer 3000
 ```
 
 Then visit [`http://localhost:3000`](http://localhost:3000).
