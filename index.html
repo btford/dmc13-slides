@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>AngularJS + PhoneGap</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/reveal.custom.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="unicornized">
+
+<div class="reveal"><div class="slides">
+
+<section data-markdown><script type="text/template">
+# Building Mobile Apps with AngularJS and PhoneGap
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+# About Me
+
+[@briantford](https://twitter.com/briantford) | [github.com/btford](https://github.com/btford) | [briantford.com](http://briantford.com)
+
+* AngularJS at Google
+* Co-author of AngularJS in Action
+* <3 Open Source
+<br>
+<br>
+## Thanks for having me!
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# This Talk
+
+* 50% Intro to Angular
+* 15% PhoneGap
+* 34% Case Study
+* 1% Unicorns
+
+<br>
+
+### There's more to Angular and PhoneGap than I can cover in 45 minutes
+
+Please ask questions and let me know your interests!
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Story Time
+
+You are writing an app.
+
+You decide to write a web app.
+
+Naturally, it should work on mobile.
+
+You have some choices to make.
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# WTF is an AngularJS?
+
+JavaScript framework
+
+How many have heard of Angular? Used it?
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Why AngularJS?
+
+AngularJS is a great way to write web apps.
+
+* Extensible
+* Productive
+* Great Community
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Why AngularJS?
+## Features
+
+* Two-way Data-binding
+* Opinionated Architecture
+* Reusable Components (Directives)
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Why AngularJS?
+## Two way Data-binding
+
+![Diagram of data-binding](img/concepts-view.png)
+
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Why AngularJS?
+## Opinionated Architecture
+
+![Diagram of architecture](img/concepts-controller.png)
+
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Why AngularJS?
+## Reusable Components (Directives)
+
+* Teach HTML new tricks
+
+<pre><code data-trim>
+&lt;date-picker date="11/12/13"&gt;&lt;/date-picker&gt;
+
+&lt;carousel&gt;&lt;/carousel&gt;
+
+&lt;google-map location="Amsterdam"&gt;&lt;/google-map&gt;
+</code></pre>
+
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Why AngularJS?
+## Community
+
+* Components (see Bower)
+* Guides, Tutorials, Blogs, etc.
+  - [Egghead.io](http://www.egghead.io/)
+  - [Yearofmoo](http://www.yearofmoo.com/)
+  - [One Hungry Mind](http://onehungrymind.com/)
+  - [My Blog](http://briantford.com/blog/)
+* [Mailing List](http://groups.google.com/group/angular)
+* [github.com/angular/angular.js](https://github.com/angular/angular.js)
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Why AngularJS?
+## Mobile Components
+
+* [Navigation](http://github.com/ajoslin/angular-mobile-nav) | [Demo](http://ajoslin.github.io/angular-mobile-nav/#/)
+* [FirefoxOS+AngularJS Boilerplate](https://github.com/comoyo/ffos-list-detail) | [Demo](http://comoyo.github.io/ffos-list-detail/#/)
+* [jQuery Mobile Adapter](https://github.com/opitzconsulting/jquery-mobile-angular-adapter)
+
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# WTF is a PhoneGap?
+
+* Bundles web app into mobile app
+* Gives bundled app access to browser APIs
+* Set of build and deploy tools
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# PhoneGap vs Cordova
+
+> "PhoneGap is a distribution of Apache Cordova."
+
+ok.
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Why PhoneGap?
+
+You are a web developer.
+
+* You know:
+  - HTML
+  - CSS
+  - JavaScript
+* Too <del>lazy</del> busy to learn *all* native platforms
+* You want to "write once, run everywhere"
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Why PhoneGap?
+
+Your web browser does not have access to:
+
+* Camera
+* Accelerometer
+* Push Notifications
+* And other cool phone features
+
+<br>
+## :-(
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# PhoneGap APIs
+## What do they look like?
+
+<pre><code data-trim>
+function onSuccess(acceleration) {
+    alert('Acceleration X: ' + acceleration.x + '\n' +
+          'Acceleration Y: ' + acceleration.y + '\n' +
+          'Acceleration Z: ' + acceleration.z + '\n' +
+          'Timestamp: '      + acceleration.timestamp + '\n');
+};
+
+function onError() {
+  alert('onError!');
+};
+
+navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+</code></pre>
+
+Yay JavaScript.
+
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Case Study
+## "Hitch-a-Ride"
+
+Open source, real-time carpooling/carsharing app.
+
+For:
+
+* Web
+* Android
+
+[https://github.com/btford/hitch-a-ride](https://github.com/btford/hitch-a-ride)
+
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# [Demo Time](demo/)
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Case Study
+## "Hitch-a-Ride"
+
+APIs:
+
+* Push notifications (WebSockets + Google Cloud Messaging)
+* Geolocation
+* InAppBrowser for Authentication
+
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Case Study
+## "Hitch-a-Ride"
+
+#### Client:
+
+* Yeoman
+* Bootstrap
+  - Bootswatch (theme)
+* Google+ Sign-in
+
+#### Server:
+
+* Node.js
+* Express
+* Socket.IO
+
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Pro-tips
+## Mobile vs Web Views
+
+An Angular view consumes a scope
+
+* Serve one HTML file for desktop, one for mobile
+* Minimize HTTP requests, use less CSS, smaller images, etc
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# AngularJS Pro-tips
+## Dependency Injection
+
+* "Don't call me, I'll call you"
+* Not your grandpa's DI
+  - No XML nonsense
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# AngularJS Pro-tips
+## Dependency Injection
+
+Why is this useful?
+
+* Replace Implementations
+  - Useful for Optimization
+* Decorators
+  - Augment existing services (1337 h4x)
+* Testing
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Pro-tips
+## Watch your CSS
+
+* Remove unused selectors
+* Minimal Fancy Stuff
+  - Gradients (use images)
+  - Transparency
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Pro-tips
+## Watch your HTML
+
+* Minimal DOM
+* Size images correctly
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Pro-tips
+## Debugging
+
+Use your Browser first.
+
+Then use platform tools & these:
+
+* [Inspecting WebViews](https://plus.google.com/+PaulIrish/posts/ccP98BTMd5Z)
+* [http://debug.phonegap.com/](http://debug.phonegap.com/)
+
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Pro-tips
+## Targeting Different Platforms
+
+How do you ensure the right scripts/resources go to the right place?
+
+* Symlinks
+* Tweak build scripts
+
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Obligatory "No Silver Bullet" Slide
+
+* Native look and feel
+* Performance
+* Debugging
+* Testing (sort of)
+
+<br>
+<br>
+## Do what makes sense for your app
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# What's Next?
+
+PhoneGap is a transitional tool.
+
+Wouldn't it be nice to have this in-browser?
+And on all platforms?
+
+FirefoxOS is a good start!
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+# Questions?
+
+## Or ask me online:
+
+* [@briantford](https://twitter.com/briantford)
+* [github.com/btford](https://github.com/btford)
+* [briantford.com](http://briantford.com)
+
+<br>
+
+### Thanks for coming!
+</script></section>
+
+
+</div></div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+  controls: false,
+  progress: true,
+  history: true,
+  center: true,
+
+  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+  transition: 'zoom', // default/cube/page/concave/zoom/linear/fade/none
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});
+</script>
+  </body>
+</html>
